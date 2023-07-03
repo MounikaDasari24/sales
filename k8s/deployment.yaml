@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomobo-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tomobo-ui
+  template:
+    metadata:
+      labels:
+        app: tomobo-ui
+    spec:
+      containers:
+      - name: tomobo-ui
+        image: <IMAGE>
+        ports:
+        - containerPort: 3039
+      imagePullSecrets:
+      - name: acr-secret
+      dnsPolicy: ClusterFirstWithHostNet
